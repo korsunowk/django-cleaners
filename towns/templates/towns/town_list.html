@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>Towns</h1>
+
+    <p>
+        <a href="{% url "towns:new" %}">Add a town</a>
+    </p>
+    <table class="table">
+        <thead>
+          <tr>
+                <th>Name</th>
+                <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for town in object_list %}
+                <tr>
+                    <td>{{ town.name }}</td>
+                    <td>
+                        <a href="{% url "towns:detail" town.id %}">Show</a> |
+                        <a href="{% url "towns:edit" town.id %}">Edit</a> |
+                        <a href="{% url "towns:delete" town.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
